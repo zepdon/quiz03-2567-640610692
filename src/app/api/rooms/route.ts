@@ -7,7 +7,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 export const GET = async () => {
   // readDB();
-  let filtered = (<DBtype>DB).rooms;
+  const filtered = (<DBtype>DB).rooms;
   return NextResponse.json({
     ok: true,
     rooms: filtered,
