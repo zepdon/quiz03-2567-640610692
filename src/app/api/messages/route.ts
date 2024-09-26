@@ -1,5 +1,5 @@
 import { DB, readDB, writeDB } from "@lib/DB";
-import { checkToken } from "@lib/checkToken";
+// import { checkToken } from "@lib/checkToken";
 import { DBtype } from "@lib/types";
 import { nanoid } from "nanoid";
 import { NextRequest, NextResponse } from "next/server";
@@ -37,7 +37,7 @@ export const POST = async (request: NextRequest) => {
   const body = await request.json(); 
   const { roomId, messageText } = body;
 
-  const roomExist = (<DBtype>DB).rooms.some(room => roomId === roomId);
+  const roomExist = (<DBtype>DB).rooms;
   if (!roomExist) {
     return NextResponse.json(
       {
@@ -59,31 +59,41 @@ export const POST = async (request: NextRequest) => {
   });
 };
 
-export const DELETE = async (request: NextRequest) => {
-  const payload = checkToken();
+// export const DELETE = async (request: NextRequest) => {
+//   // const body = await request.json();
+//   const payload = checkToken();
+//   if (!payload) {
+//     return NextResponse.json(
+//       {
+//         ok: false,
+//         message: "Missing or invalid token",
+//       },
+//       { status: 401 }
+//     );
+//   }
 
-  // return NextResponse.json(
-  //   {
-  //     ok: false,
-  //     message: "Invalid token",
-  //   },
-  //   { status: 401 }
-  // );
+//   // return NextResponse.json(
+//   //   {
+//   //     ok: false,
+//   //     message: "Invalid token",
+//   //   },
+//   //   { status: 401 }
+//   // );
 
-  readDB();
+//   readDB();
 
-  // return NextResponse.json(
-  //   {
-  //     ok: false,
-  //     message: "Message is not found",
-  //   },
-  //   { status: 404 }
-  // );
+//   // return NextResponse.json(
+//   //   {
+//   //     ok: false,
+//   //     message: "Message is not found",
+//   //   },
+//   //   { status: 404 }
+//   // );
 
-  writeDB();
+//   writeDB();
 
-  return NextResponse.json({
-    ok: true,
-    message: "Message has been deleted",
-  });
-};
+//   return NextResponse.json({
+//     ok: true,
+//     message: "Message has been deleted",
+//   });
+// };

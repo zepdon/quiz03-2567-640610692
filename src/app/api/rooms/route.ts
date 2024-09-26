@@ -1,11 +1,11 @@
 import { DB, readDB, writeDB } from "@lib/DB";
 import { checkToken } from "@lib/checkToken";
 import { DBtype, Payload } from "@lib/types";
-import { read } from "fs";
+// import { read } from "fs";
 import { nanoid } from "nanoid";
 import { NextRequest, NextResponse } from "next/server";
 
-export const GET = async (request: NextRequest) => {
+export const GET = async () => {
   // readDB();
   let filtered = (<DBtype>DB).rooms;
   return NextResponse.json({
